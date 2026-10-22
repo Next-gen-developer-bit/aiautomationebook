@@ -117,14 +117,23 @@ window.addEventListener('scroll', () => {
 });
 
 // ===== BUY BUTTON CLICK TRACKING =====
+const GUMROAD_URL = 'https://socialize0.gumroad.com/l/ai_automation_guide';
+
 document.querySelectorAll('#buyButton, #finalBuyButton').forEach(btn => {
   btn.addEventListener('click', function(e) {
     e.preventDefault();
-    // Replace this URL with your actual payment link (Gumroad, Stripe, PayPal, etc.)
-    const paymentUrl = '#'; // 👈 REPLACE WITH YOUR PAYMENT LINK
-    alert('🚀 Redirecting to secure checkout!\n\nReplace the paymentUrl in script.js with your actual payment link (Gumroad, Stripe, PayPal, etc.)');
-    // window.location.href = paymentUrl;
+    window.location.href = GUMROAD_URL;
   });
+});
+
+// Also make any .cta-btn that isn't #buyButton or #finalBuyButton go to Gumroad
+document.querySelectorAll('.cta-btn').forEach(btn => {
+  if (btn.id !== 'buyButton' && btn.id !== 'finalBuyButton') {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.location.href = GUMROAD_URL;
+    });
+  }
 });
 
 console.log('%c⚡ AI Automation Blueprint Landing Page Loaded', 'color: #FF6B00; font-weight: bold; font-size: 16px;');
